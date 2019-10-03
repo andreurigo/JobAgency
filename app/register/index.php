@@ -1,108 +1,78 @@
 <!DOCTYPE html>
-<html class="full" lang="es">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="shortcut icon" href="favicon.ico">
-
-    <title>Register in JobNow!</title>
-
-    <meta name="author" content="IAW-Team">
-
-    <link href="../../models/css/bootstrap.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
-
-  </head>
-  <body>
-<div id="cuerpo">
-    <div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8">
-			<div class="page-header">
-				<h1>
-				<img src="../../models/images/logo2.png" width="50%">
-				</h1>
-				
-			</div>
-		</div>	
-	</div>
-	<div class="row">
-		<div class="col-xs-12">
-			<h3 class="text-center" name="title2"  style="color:white;">
-				Sign up to use the platform 
-			</h3>
-		</div>
-	</div>
-	<div class="row">
-		<div id="cuerpo" class="col-xs-12">
-			<form role="form" action="register.php" method="post">
-				<div class="form-group col-xs-2 col-xs-offset-5">
-					 
-					<label for="Email" style="color:white;">
-						Email address
-					</label>
-					<input type="email" class="form-control" name='email' id="Email" value=<?php if (isset($newemail)) echo htmlentities($newemail); ?>>
-				</div>
-				<div class="form-group col-xs-2 col-xs-offset-5">
-					 
-					<label for="Email1" style="color:white;">
-						Name
-					</label>
-					<input type="name" class="form-control" name='name' id="Name" value=<?php if (isset($name)) echo htmlentities($name); ?>>
-				</div>
-				<div class="form-group col-xs-2 col-xs-offset-5">
-					 
-					<label for="Password2"  style="color:white;">
-						Password
-					</label>
-					<input type="password" class="form-control" name='pass1' id="Password1">
-				</div>
-				<div class="form-group col-xs-2 col-xs-offset-5">
-					 
-					
-					<label for="Password2"  style="color:white;">
-						Confirm Password
-					</label>
-					
-					<input type="password" class="form-control" name='pass2' id="Password2">
-				</div>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<div class="checkbox col-xs-2 col-xs-offset-4">
-							 
-							<label  style="color:white;">
-								<input name="class" type="radio" value="users" checked/> I'm a particular
-							</label>
-							<label  style="color:white;">
-								<input name="class" type="radio" value="companies"/> I'm a Company
-							</label>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-2 col-xs-offset-5">
-				<button type="submit" class="btn btn-default">
-					Sign Up
-				</button>
-				</div>
-			</form>
-		</div>
-	</div>
-	<div class="row" style="clear: both;">
-		<div class="col-md-12">
-			<p id="footer" class="text-center text-info">
-				Copyright &#169; 2016 JobNow!</br>
-				All rights reserved
-
-				This product is protected by copyright and distributed </br>
-				under licenses restricting copying, distributions, and decompilation
-			</p>
-		</div>
-	</div>
-</div>
-</div>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="../../models/images/favicon.ico">
+<title>Register in JobNow!</title>
+<meta name="author" content="IAW-Team">
+<link href="../../models/css/bootstrap.min.css" rel="stylesheet">
+<link href="../../models/css/style.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script>
+//Show Company/User fields for register
+    function Company(){
+        document.getElementById('phone').style.display = 'none';
+        document.getElementById('studies').style.display = 'none';
+        document.getElementById('languages').style.display = 'none';
+        document.getElementById('laboral').style.display = 'none';
+    }
+    function User(){
+        document.getElementById('phone').style.display = 'block';
+        document.getElementById('studies').style.display = 'block';
+        document.getElementById('languages').style.display = 'block';
+        document.getElementById('laboral').style.display = 'block';
+    }
+</script>
+</head>
+<body>
+    <div class="logo">
+        <a class="logo" href="../login/index.html"><img src="../../models/images/logo2.png"></a>   
+    </div>
+    <div class="content"><br>
+        <h3 class="text-center">Sign up to use the platform</h3>
+<!--Registration form-->
+        <form role="form" action="register.php" method="post">
+            <div class="radios form-group col-md-2 col-md-offset-5 col-xs-7 col-xs-offset-3">
+                    <input name="class" onclick="User()" type="radio" value="users" checked/> I'm a Particular <br>
+                    <input name="class" onclick="Company()" type="radio" value="companies"/> I'm a Company
+            </div>
+            <div class="form-group col-md-2 col-md-offset-5 col-xs-7 col-xs-offset-3">
+                <input placeholder="Name" type="text" class="form-control" name='name' id="Name" value=<?php if (isset($name)) echo htmlentities($name); ?>>
+            </div>
+            <div id="phone" class="form-group col-md-2 col-md-offset-5 col-xs-7 col-xs-offset-3">
+                <input placeholder="Phone" type="text" class="form-control" name='phone' id="phone" value=<?php if (isset($phone)) echo htmlentities($phone); ?>>
+            </div>
+            <div class="form-group col-md-2 col-md-offset-5 col-xs-7 col-xs-offset-3">
+                <input placeholder="Email" type="text" class="form-control" name='email' id="Email" value=<?php if (isset($newemail)) echo htmlentities($newemail); ?>>
+            </div>
+            <div id="studies" class="form-group col-md-2 col-md-offset-5 col-xs-7 col-xs-offset-3">
+                <textarea rows="1" placeholder="Finished Studies" type="text" class="form-control" name='study' id="study"><?php if (isset($study)) echo nl2br($study); ?></textarea> 
+            </div>
+            <div id="languages" class="form-group col-md-2 col-md-offset-5 col-xs-7 col-xs-offset-3">
+                <textarea rows="1" placeholder="Languages" type="text" class="form-control" name='languages' id="languages"><?php if (isset($language)) echo htmlentities($language); ?></textarea> 
+            </div>
+            <div id="laboral" class="form-group col-md-2 col-md-offset-5 col-xs-7 col-xs-offset-3">
+                <textarea rows="1" placeholder="Work Experience" type="text" class="form-control" name='laboral' id="laboral"><?php if (isset($laboral)) echo htmlentities($laboral); ?></textarea>
+            </div>
+            <div class="form-group col-md-2 col-md-offset-5 col-xs-7 col-xs-offset-3">
+                <input placeholder="Password" type="password" class="form-control" name='pass1' id="Password1">
+            </div>
+            <div class="form-group col-md-2 col-md-offset-5 col-xs-7 col-xs-offset-3">
+                <input  placeholder="Password Confirmation" type="password" class="form-control" name='pass2' id="Password2">
+            </div>
+            <div class="form-group col-md-2 col-md-offset-5 col-xs-7 col-xs-offset-3">
+                <button type="submit" class="btn btn-default">Sign Up</button>
+            </div>
+        </form>
+    </div>
+<!--FOOTER-->
+    <div class="footer text-center text-info col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+        Copyright &#169; 2016 JobNow!</br>All rights reserved. This product is protected by copyright and distributed </br>under licenses restricting copying, distributions, and decompilation
+    </div>
     <script src="../../models/js/jquery.min.js"></script>
     <script src="../../models/js/bootstrap.min.js"></script>
-    <script src="../../models/js/scripts.js"></script>
-  </body>
+
+</body>
 </html>

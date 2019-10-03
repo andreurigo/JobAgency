@@ -5,56 +5,48 @@ if(isset($_POST['submit'])){
     $actualpword = sha1($_POST['oldpass']);
     $pword = sha1($_POST['newpass1']);
     $pword2 = sha1($_POST['newpass2']);
+//Check if current password is correct
     if($actualpword != $_COOKIE['Password']){
-        echo    '<div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="alert alert-dismissable alert-danger">
-                                
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-                                    ×
-                                </button>
-                                <h4>
-                                    Error!
-                                </h4> <strong>Warning!</strong> Actual password incorrect.
-                            </div>
-                        </div>
+        echo    '<div class="container-fluid row col-md-12">
+                    <div class="alert alert-dismissable alert-danger">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                            ×
+                        </button>
+                        <h4>
+                            Error!
+                        </h4> <strong>Warning!</strong> Current password incorrect.
                     </div>
                 </div>';
+//Check if new password confirmaion match
     } elseif($pword != $pword2){
-        echo    '<div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="alert alert-dismissable alert-danger">        
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-                                    ×
-                                </button>
-                                <h4>
-                                    Error!
-                                </h4> <strong>Warning!</strong> New passwords doesn\'t match.
-                            </div>
-                        </div>
+        echo    '<div class="container-fluid row col-md-12">
+                    <div class="alert alert-dismissable alert-danger">        
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                            ×
+                        </button>
+                        <h4>
+                            Error!
+                        </h4> <strong>Warning!</strong> New passwords don\'t match.
                     </div>
                 </div>';
+//Check if password is being changed
     } elseif($actualpword == $pword) {
-        echo    '<div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="alert alert-dismissable alert-danger">        
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-                                    ×
-                                </button>
-                                <h4>
-                                    Error!
-                                </h4> <strong>Warning!</strong> Please insert a different password.
-                            </div>
-                        </div>
+        echo    '<div class="container-fluid row col-md-12">
+                    <div class="alert alert-dismissable alert-danger">        
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                            ×
+                        </button>
+                        <h4>
+                            Error!
+                        </h4> <strong>Warning!</strong> Please insert a different password.
                     </div>
                 </div>';
     } else {
+//Change password
         require ('../../models/mysqli_connect.php');
         $q = "UPDATE users SET Password='".$pword."' WHERE UserID=".$_COOKIE['UserID'];
         $r = @mysqli_query ($dbc, $q);
+//If it ran OK
         if($r){
             include('../../models/success.php');
             $id = $_COOKIE['UserID'];
@@ -64,6 +56,7 @@ if(isset($_POST['submit'])){
             while ($row1 = mysqli_fetch_array($ri, MYSQLI_ASSOC)) {
                 require('../../models/cookiesUser.php');
             }
+//If it dind't run OK...
         } else {
             include('../../models/error.php');
         }
@@ -72,21 +65,18 @@ if(isset($_POST['submit'])){
 }
 ?>
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="page-header">
-                <h1 class="worktitle">
-                    Change your password <?php echo $_COOKIE['Name'] ?>
-                </h1>
-            </div>
+    <div class="row col-md-8">
+        <div class="page-header">
+            <h1 class="worktitle">
+                Change your password <?php echo $_COOKIE['Name'] ?>
+            </h1>
         </div>
     </div>
-    <div class="row">
-        <div  class="labels col-md-12">
+    <div class="row labels col-md-12">
             <form role="form" action="" method="post">
                 <div class="form-group col-md-2 col-md-offset-5">
                     <label for="passwordold">
-                        Actual Password
+                        Current Password
                     </label>
                     <input type="password" class="form-control" name='oldpass' id="oldpass">
                 </div>
@@ -109,5 +99,5 @@ if(isset($_POST['submit'])){
                 </div>
             </form>
 <?php
-include('footer.html');
+include('footer.php');
 ?>

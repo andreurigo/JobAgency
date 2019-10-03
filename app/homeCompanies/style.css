@@ -2,16 +2,26 @@
     font-weight: bold;
     margin-left: 5%;
     color: #990033;
-    text-shadow: 0.8px 0.2px black;
+    text-shadow: -1px 1px black;
 }
-
-
-
+.eraseuser{
+    text-decoration: underline;
+    font-size: 32px;
+    font-weight: bold;
+    color:#AE033E;
+    text-shadow: -1px 1px black;
+}
+.eraseuser:hover{
+    text-decoration: underline;
+    font-size: 32px;
+    font-weight: bold;
+    color:#AE234E;
+    text-shadow: -1px 1px black;
+}
 #footer{
     color: white;
-    background-color:#990033;
+    background-color:#4d0000;
     border-radius: 10px;
-    height: 70px;
 }
 body {
 	margin-top: 0px;
@@ -42,12 +52,12 @@ body {
     font-size: 48px;
     font-weight: bold;
     color: #AE033E;
-    text-shadow: 1px 0.5px white;
+    text-shadow: -1px 1px black;
 }
 .numoffers{
     font-weight: bold;
     color:#AE033E;
-    text-shadow: 1px 0.5px black;
+    text-shadow: -1px 1px black;
     border: outset;
     border-radius:10px;
 }
@@ -55,14 +65,14 @@ body {
     font-size: 36px;
     font-weight: bold;
     color:#AE033E;
-    text-shadow: 1px 0.5px black;
+    text-shadow: -1px 1px black;
 }
 .profile{
     font-size: 32px;
     font-weight: bold;
     text-decoration: underline;
     color:#AE033E;
-    text-shadow: 0.8px 0.2px black;
+    text-shadow: -1px 1px black;
 }
 .allprofile{
     color: black;
@@ -88,7 +98,7 @@ body {
 th{
     font-size: 22px;
     color:#AE033E;
-    text-shadow: 0.8px 0.2px white;
+    text-shadow: -1px 1px black;
 }
 td{
     font-size: 18px;
@@ -102,7 +112,7 @@ dt{
     color: #c20a4e;
     font-weight: bold;
     font-size: 20px;
-    text-shadow: 0.8px 0.2px black;
+    text-shadow: -1px 1px black;
 }
 dd{
     font-size:18px;

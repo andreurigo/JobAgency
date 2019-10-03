@@ -4,21 +4,17 @@
     color: #990033;
     text-shadow: 0.8px 0.2px black;
 }
-
-
-
 #footer{
     color: white;
     background-color:#990033;
     border-radius: 10px;
-    height: 70px;
+    text-align: center;
 }
 body {
 	margin-top: 0px;
 	margin-bottom: 0px;
 	background: none;
 }
-
 .full {
   background: url(../../models/images/home.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
@@ -60,8 +56,21 @@ body {
 .profile{
     font-size: 32px;
     font-weight: bold;
-    text-decoration: underline;
     color:#AE033E;
+    text-shadow: 0.8px 0.2px black;
+}
+.eraseuser{
+    text-decoration: underline;
+    font-size: 32px;
+    font-weight: bold;
+    color:#AE033E;
+    text-shadow: 0.8px 0.2px black;
+}
+.eraseuser:hover{
+    text-decoration: underline;
+    font-size: 32px;
+    font-weight: bold;
+    color:#AE234E;
     text-shadow: 0.8px 0.2px black;
 }
 .allprofile{
@@ -83,8 +92,15 @@ body {
     font-size: 22px;
     text-shadow: 0.8px 0.2px black;
 }
-
-
+.details{
+    font-size: 18px;
+    color: black;
+}
+.description{
+    font-size: 18px;
+    color: black;
+    font-weight: normal;
+}
 th{
     font-size: 22px;
     color:#AE033E;
@@ -92,7 +108,6 @@ th{
 }
 td{
     font-size: 18px;
-    text-align: justify;
 }
 .offer{
     border: outset;

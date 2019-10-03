@@ -1,19 +1,20 @@
 <?php 
 include('headerUser.html');
 require ('../../models/mysqli_connect.php');
+//Get nº of inscriptions
 $q = "SELECT count(OfferID) as Count FROM usersoffers WHERE UserID = '".$_COOKIE['UserID']."'";
 $r = @mysqli_query ($dbc, $q);
-// Count the number of returned rows:
 $num = mysqli_num_rows($r);
 if ($num > 0) {
     while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
         $count = $row['Count'];
     }
 }
+//Get user info
 $q1 = "SELECT * FROM users WHERE UserID = '".$_COOKIE['UserID']."'";
 $r1 = @mysqli_query ($dbc, $q1);
-// Count the number of returned rows:
 $num1 = mysqli_num_rows($r1);
+
 if ($num1 > 0) {
     while ($row1 = mysqli_fetch_array($r1, MYSQLI_ASSOC)) {
         $register=$row1['RegistrationDate'];
@@ -21,6 +22,7 @@ if ($num1 > 0) {
 }
 mysqli_close($dbc);
 ?>
+<!--Show user info-->
 <div class="container-fluid">
 	<div class="row">
 		<div class=" col-md-12">
@@ -52,9 +54,13 @@ mysqli_close($dbc);
 			<h2 class="text-center">
                 Registered: <?php echo $register; ?>
 			</h2>
+			<h2 class="text-center">
+				<a class="eraseuser" href="EditUser.php">Edit Profile</a><br><br>
+				<a class="eraseuser" href="EraseUser.php">Erase Profile</a>
+			</h2>
 		</div>
 	</div>
 </div>
 <?php
-include('footer.html');
+include('footer.php');
 ?>

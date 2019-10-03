@@ -4,7 +4,9 @@ include('headerCompanies.html');
 if ( (isset($_GET['Action'])) && (is_numeric($_GET['Action'])) ) {
     require ('../../models/mysqli_connect.php');
     $Action = $_GET['Action'];
+//Create offer
     if ($Action == 1) {
+//Check fields
         if (!(empty(trim($_GET['title']))) && !(empty(trim($_GET['description'])))) {
             $title = $_GET['title'];
             $description = $_GET['description'];
@@ -22,6 +24,7 @@ if ( (isset($_GET['Action'])) && (is_numeric($_GET['Action'])) ) {
                 include('../../models/error.php');
             }
         } else {
+//If empty fields...
             if (!((empty(trim($_GET['title']))))) {
                 $title = $_GET['title'];
                 $href = 'NewOffer.php?Title='.$title;
@@ -46,6 +49,7 @@ if ( (isset($_GET['Action'])) && (is_numeric($_GET['Action'])) ) {
                     </div>';
         }
     } 
+//Update offer
     elseif ($Action == 2) {
         if ( (isset($_GET['OfferID'])) && (is_numeric($_GET['OfferID'])) ) {
             $id = $_GET['OfferID'];
@@ -65,6 +69,7 @@ if ( (isset($_GET['Action'])) && (is_numeric($_GET['Action'])) ) {
                 include('../../models/error.php');
             }
         } else {
+//If empty fields...
             if (!((empty(trim($_GET['title']))))) {
                 $title = $_GET['title'];
                 $href = 'NewOffer.php?Action=2&OfferID='.$id.'Title='.$title;
@@ -92,6 +97,7 @@ if ( (isset($_GET['Action'])) && (is_numeric($_GET['Action'])) ) {
         }
         }
     } 
+//Delete Offer
     elseif ($Action == 3) {
         if ( (isset($_GET['OfferID'])) && (is_numeric($_GET['OfferID'])) ) {
             $id = $_GET['OfferID'];
@@ -118,5 +124,5 @@ if ( (isset($_GET['Action'])) && (is_numeric($_GET['Action'])) ) {
 } else {
    include('../../models/error.php'); 
 }
-include('footer.html');
+include('footer.php');
 ?>

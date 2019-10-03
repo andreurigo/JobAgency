@@ -6,7 +6,7 @@ if(isset($_POST['submit'])){
     $actualpword = sha1($_POST['oldpass']);
     $pword = sha1($_POST['newpass1']);
     $pword2 = sha1($_POST['newpass2']);
-
+//Check if current password is correct
     if($actualpword != $_COOKIE['Password']){
         echo    '<div class="container-fluid">
                     <div class="row">
@@ -18,11 +18,12 @@ if(isset($_POST['submit'])){
                                 </button>
                                 <h4>
                                     Error!
-                                </h4> <strong>Warning!</strong> Actual password incorrect.
+                                </h4> <strong>Warning!</strong> Current password incorrect.
                             </div>
                         </div>
                     </div>
                 </div>';
+//Check if new password confirmaion match
     } elseif($pword != $pword2){
         echo    '<div class="container-fluid">
                     <div class="row">
@@ -38,6 +39,7 @@ if(isset($_POST['submit'])){
                         </div>
                     </div>
                 </div>';
+//Check if password is being changed
     } elseif($actualpword == $pword) {
         echo    '<div class="container-fluid">
                     <div class="row">
@@ -54,11 +56,11 @@ if(isset($_POST['submit'])){
                     </div>
                 </div>';
     } else {
+//Change password
         require ('../../models/mysqli_connect.php');
         $q = "UPDATE companies SET Password='".$pword."' WHERE CompanyID=".$_COOKIE['CompanyID'];
-
         $r = @mysqli_query ($dbc, $q);
-
+//If it ran OK
         if($r){
             include('../../models/success.php');
             $id = $_COOKIE['CompanyID'];
@@ -71,6 +73,7 @@ if(isset($_POST['submit'])){
             while ($row1 = mysqli_fetch_array($ri, MYSQLI_ASSOC)) {
                 require('../../models/cookiesCompany.php');
             }
+//If it dind't run OK...
         } else {
             include('../../models/error.php');
         }
@@ -93,7 +96,7 @@ if(isset($_POST['submit'])){
             <form role="form" action="" method="post">
                 <div class="form-group col-md-2 col-md-offset-5">
                     <label for="passwordold" >
-                        Actual Password
+                        Current Password
                     </label>
                     <input type="password" class="form-control" name='oldpass' id="oldpass">
                 </div>
@@ -116,5 +119,5 @@ if(isset($_POST['submit'])){
                 </div>
             </form>
 <?php
-include('footer.html');
+include('footer.php');
 ?>

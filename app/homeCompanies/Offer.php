@@ -1,45 +1,32 @@
 <?php 
 include('headerCompanies.html');
-//PHP code to show Offer info
+//Get Offer info
 $check = false;
 if ( (isset($_GET['OfferID'])) && (is_numeric($_GET['OfferID'])) ) {
 	require ('../../models/mysqli_connect.php');
     $id = $_GET['OfferID'];
     $q = "SELECT * FROM offers WHERE OfferID = ".$id;
-
     $r = @mysqli_query ($dbc, $q);
-
-    // Count the number of returned rows:
-    $num = mysqli_num_rows($r);
-    $check = true;
-} elseif ((isset($_POST['Title']))) {
-    require ('../../models/mysqli_connect.php');
-    $title = $_POST['Title'];
-    $q = "SELECT * FROM offers WHERE CompanyID = ".$_COOKIE['CompanyID']." AND (Title LIKE '%".$title."%' OR Description LIKE '%".$title."%' OR Category LIKE '%".$title."%')";
-
-    $r = @mysqli_query ($dbc, $q);
-
-    // Count the number of returned rows:
     $num = mysqli_num_rows($r);
     $check = true;
 }
+//If exists offer show info
     if($num > 0 && $check) {
         while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
-            echo '<div class=" offer container-fluid">
-                    <div class="row">
-                        <div class="col-md-6">
+            echo '<div class="offer container-fluid">
+                    <div class="row col-md-5 col-md-offset-1">
                             <h3 class="worktitle text-center">
                                 Offer Information
                             </h3>
-                            <dl style="text-align:center;">
+                            <dl><br>
                                 <dt>
-                                    Title </br>
+                                    Title
                                 </dt>
                                 <dd>';
-            echo                    $row['Title'].'
-                                </br></br></dd>
+            echo                      $row['Title'].'
+                                </dd><br>
                                 <dt>
-                                    Category </br>
+                                    Category
                                 </dt>
                                 <dd>';
                                     if ($row['Category'] == NULL) { echo 'Others';} else { echo $row['Category'];};
@@ -48,7 +35,7 @@ if ( (isset($_GET['OfferID'])) && (is_numeric($_GET['OfferID'])) ) {
                                     Description </br>
                                 </dt>
                                 <dd>';
-            echo                    $row['Description'].'
+            echo                     nl2br($row['Description']).'
                                 </br></br></dd>
                                 <dt>
                                     Actions </br>
@@ -68,6 +55,7 @@ if ( (isset($_GET['OfferID'])) && (is_numeric($_GET['OfferID'])) ) {
                                 </dd>
                             </dl>
                         </div>
+                            
                         <div class="col-md-6">
                             <h3 class="text-center worktitle">
                                 Inscriptions
@@ -76,50 +64,33 @@ if ( (isset($_GET['OfferID'])) && (is_numeric($_GET['OfferID'])) ) {
                                 <thead>
                                     <tr>
                                         <th>
-                                            Code
-                                        </th>
-                                        <th>
                                             Name
-                                        </th>
-                                        <th>
-                                            Email
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>';
-                $qi = "SELECT users.UserID, users.Name, users.Email 
-                FROM users INNER JOIN usersoffers 
+//Get inscripted Users
+                $qi = "SELECT users.UserID, users.Name
+                FROM users 
+                INNER JOIN 
+                usersoffers 
                 ON users.UserID = usersoffers.UserID 
                 WHERE usersoffers.OfferID =".$row['OfferID'];
 
                 $ri = @mysqli_query ($dbc, $qi);
-
                 $num1 = mysqli_num_rows($ri);
-
+//Show users
                 if ($num1 > 0) {
                     while ($row1 = mysqli_fetch_array($ri, MYSQLI_ASSOC)) {
-                        echo '<tr>
-                                <td>';
-                        echo        $row1['UserID'].'
-                                </td>
-                                <td>';
-                        echo        $row1['Name'].'
-                                </td>
-                                <td>';
-                        echo        $row1['Email'].'
-                                </td>
-                            </tr>';
+                        echo '<tr role="button" data-href="User.php?UserID=' . $row1['UserID'] . '">
+                                <td>'.$row1['Name'].'</td>
+                              </tr>';
                     }
+//Show no inscriptions message
                 } else {
                     echo '<tr>
                             <td>
                                 No inscriptions
-                            </td>
-                            <td>
-                                -
-                            </td>
-                            <td>
-                                -
                             </td>
                          </tr>';
                 }
@@ -130,8 +101,17 @@ if ( (isset($_GET['OfferID'])) && (is_numeric($_GET['OfferID'])) ) {
                     </div>';
         }
     } else {
+//Show errors
         include('../../models/error.php');
     }
 mysqli_close($dbc);
-include('footer.html');
+include('footer.php');
+//JQuery code for clickable table fields
+echo ' <script>
+            $(function(){
+                 $(".table").on("click", "tr[role=\"button\"]", function (e) {
+                      window.location = $(this).data("href");
+                 });
+});
+        </script>';
 ?>
