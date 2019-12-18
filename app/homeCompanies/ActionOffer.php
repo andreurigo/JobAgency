@@ -1,16 +1,16 @@
-<?php 
-include('headerCompanies.html');
-//PHP code to create/update/delete Offers
-if ( (isset($_GET['Action'])) && (is_numeric($_GET['Action'])) ) {
-    require ('../../models/mysqli_connect.php');
-    $Action = $_GET['Action'];
-//Create offer
-    if ($Action == 1) {
-//Check fields
+<?php
+require "$documentRoot/app/homeCompanies/headerCompanies.html";
+$actionType =  filter_input(INPUT_POST, "Action", FILTER_VALIDATE_INT);
+if (isset($actionType) && is_numeric($actionType)) {
+    //PHP code to create/update/delete Offers
+    include "../../models/mysqli_connect.php";
+    //Create offer
+    if ($actionType === 1) {
+        $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_STRING);
+        $description = filter_input(INPUT_POST, "description", FILTER_SANITIZE_STRING);
+        $category = filter_input(INPUT_POST, "cateogry", FILTER_SANITIZE_STRING);
+        //Check fields
         if (!(empty(trim($_GET['title']))) && !(empty(trim($_GET['description'])))) {
-            $title = $_GET['title'];
-            $description = $_GET['description'];
-            $category = $_GET['category'];
             if ($category == 'NULL') {
                 $category = NULL;
             }
