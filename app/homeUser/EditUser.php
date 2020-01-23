@@ -33,6 +33,9 @@ echo        '</div>
 echo ($row['WorkExp']).'</textarea>';
 //Submit button
 echo        '</div>
+            <div id="laboral" class="form-group col-md-5 col-md-offset-4 col-sm-12">
+                <input placeholder="Curriculum URL" type="text" class="form-control" name="CurriculumURL" id="CurriculumURL" value="'.$row['CurriculumURL'].'"/>
+            </div>
             <div class="form-group col-md-5 col-md-offset-4 col-sm-12">
                 <button type="submit" class="btn btn-success">Update profile</button>
             </div>
@@ -40,7 +43,7 @@ echo        '</div>
 
 //Update changed fields
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $q1 = "UPDATE users SET Name = '".$_POST['Name']."', Phone = ".$_POST['Phone'].", Email = '".$_POST['Email']."', Studies = '".$_POST['Study']."', Languages = '".$_POST['Languages']."', WorkExp = '".$_POST['WorkExp']."'  WHERE UserID=".$_COOKIE['UserID'];
+    $q1 = "UPDATE users SET Name = '".$_POST['Name']."', Phone = ".$_POST['Phone'].", Email = '".$_POST['Email']."', Studies = '".$_POST['Study']."', Languages = '".$_POST['Languages']."', WorkExp = '".$_POST['WorkExp']."', CurriculumURL = '".$_POST['CurriculumURL']."' WHERE UserID=".$_COOKIE['UserID'];
     $r1 = @mysqli_query ($dbc, $q1);
     if($r1){
         include('../../models/success.php');      
