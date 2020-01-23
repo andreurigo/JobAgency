@@ -105,7 +105,7 @@ if ( (isset($_GET['OfferID'])) && (is_numeric($_GET['OfferID'])) ) {
         include('../../models/error.php');
     }
 mysqli_close($dbc);
-include('footer.php');
+include('footer.html');
 //JQuery code for clickable table fields
 echo ' <script>
             $(function(){

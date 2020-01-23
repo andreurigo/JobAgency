@@ -62,5 +62,5 @@ mysqli_close($dbc);
 	</div>
 </div>
 <?php
-include('footer.php');
+include('footer.html');
 ?>

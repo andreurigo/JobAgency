@@ -48,5 +48,5 @@ if($num > 0){
         </div>';
 }
 mysqli_close($dbc);
-include('footer.php');
+include('footer.html');
 ?>

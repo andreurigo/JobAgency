@@ -54,5 +54,5 @@ if ( (isset($_GET['Action'])) && (is_numeric($_GET['Action'])) ) {
 } else {
    include('../../models/error.php'); 
 }
-include('footer.php');
+include('footer.html');
 ?>

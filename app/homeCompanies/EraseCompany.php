@@ -50,5 +50,5 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 }
 //Close DB
 mysqli_close($dbc);
-include('footer.php');
+include('footer.html');
 ?>

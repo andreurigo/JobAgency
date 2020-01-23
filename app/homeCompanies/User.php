@@ -72,5 +72,5 @@ if ( isset($_GET['UserID']) ) {
         include('../../models/error.php');
     }
 mysqli_close($dbc);
-include('footer.php');
+include('footer.html');
 ?>

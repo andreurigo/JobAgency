@@ -1,11 +1,11 @@
 <?php
-setcookie("Cookies", 1, strtotime("+7 days"), "/");
-setcookie("CompanyID", $companyFound["CompanyID"], strtotime("+7 days"), "/");
-setcookie("Name", $companyFound["Name"], strtotime("+7 days"), "/");
-setcookie("Email", $companyFound["Email"], strtotime("+7 days"), "/");
-setcookie("Password", $companyFound["Password"], strtotime("+7 days"), "/");
+setcookie('Cookies', 1, time()+2592000, '/');
+setcookie('CompanyID', $row1['CompanyID'], time()+31536000, '/');
+setcookie('Name', $row1['Name'], time()+31536000, '/');
+setcookie('Email', $row1['Email'], time()+31536000, '/');
+setcookie('Password', $row1['Password'], time()+31536000, '/');
 session_start();
+$_SESSION['name'] = $row1['Name'];
+$_SESSION['email'] = $row1['Email'];
 
-$_SESSION["name"] = $companyFound["Name"];
-$_SESSION["email"] = $companyFound["Email"];
 ?>
