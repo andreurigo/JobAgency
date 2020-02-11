@@ -30,12 +30,12 @@
     <div class="logo">
         <a class="logo" href="../login/index.html"><img src="../../models/images/logo2.png"></a>   
     </div>
-    <div class="content"><br>
+    <div class="content"><br/>
         <h3 class="text-center">Sign up to use the platform</h3>
 <!--Registration form-->
         <form role="form" action="register.php" method="post">
             <div class="radios form-group col-md-2 col-md-offset-5 col-xs-7 col-xs-offset-3">
-                    <input name="class" onclick="User()" type="radio" value="users" checked/> I'm a Particular <br>
+                    <input name="class" onclick="User()" type="radio" value="users" checked/> I'm a Particular <br/>
                     <input name="class" onclick="Company()" type="radio" value="companies"/> I'm a Company
             </div>
             <div class="form-group col-md-2 col-md-offset-5 col-xs-7 col-xs-offset-3">
@@ -69,7 +69,7 @@
     </div>
 <!--FOOTER-->
     <div class="footer text-center text-info col-lg-12 col-md-12 col-sm-12 col-xs-12" >
-        Copyright &#169; 2016 JobNow!</br>All rights reserved. This product is protected by copyright and distributed </br>under licenses restricting copying, distributions, and decompilation
+        Copyright &#169; 2016 JobNow!<br/>All rights reserved. This product is protected by copyright and distributed <br/>under licenses restricting copying, distributions, and decompilation
     </div>
     <script src="../../models/js/jquery.min.js"></script>
     <script src="../../models/js/bootstrap.min.js"></script>

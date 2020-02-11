@@ -46,7 +46,7 @@ if (isset($_GET['Action'])) {
           <div class="form-group">
             <label for="category">
               Category
-            </label></br>
+            </label><br/>
             <select name="category" class="form-control"> 
               <option value="NULL" <?php if (!(isset($category)) || $category=='NULL') echo "selected"; ?>>Others</option>
               <option value="TIC" <?php if ((isset($category)) && $category=='TIC') echo "selected"; ?>>TIC</option>

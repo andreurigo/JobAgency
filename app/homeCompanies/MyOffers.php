@@ -35,6 +35,7 @@ if($num > 0){
 						        <th>Title</th>
 								<th>Category</th>
                                 <th>Inscribed</th>
+                                <th>Created at</th>
 					        </tr>
 				        </thead>
                        <tbody>';
@@ -50,6 +51,7 @@ if($num > 0){
 						if ($row['Category'] == NULL) { echo 'Others';} else { echo $row['Category'];};	
 			echo	'</td>
 				    <td>'.$row1['Inscriptions'].'</td>
+                    <td>'.$row['created_at'].'</td>
 			    </tr>';
         }
     }

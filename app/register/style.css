@@ -11,11 +11,11 @@ title3{
     border-radius: 10px;
     margin-top:70px;
 }
-body {
+/*body {
 	margin-top: 0px;
 	margin-bottom: 0px;
 	background: none;
-}
+}*/
 
 .full {
   background: url(../../models/images/wallpaper1.jpg) no-repeat center center scroll; 

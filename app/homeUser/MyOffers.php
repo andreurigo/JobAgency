@@ -30,6 +30,7 @@ if($num > 0){
             if ($row1['Category'] == NULL) { echo 'Others';} else { echo $row1['Category'];} 
             echo '</p></th></tr>
 				  <tr><th>Description<p class="description">'. nl2br($row1['Description']) .'</p></th></tr>
+				  <tr><th>Created at<p class="details">'.$row1['created_at'].'</p></th></tr>
                   <tr><td><a href="ActionOffer.php?Action=1&OfferID=' . $row['OfferID'] . '">
                             <a href="showOffer.php?OfferID=' . $row['OfferID'] . '">
 								<button type="button" class="btn btn-sm btn-primary">

@@ -6,7 +6,7 @@ $q = "SELECT * FROM companies WHERE CompanyID=".$_COOKIE['CompanyID'];
 $r = @mysqli_query ($dbc, $q);
 $row = mysqli_fetch_array($r, MYSQLI_ASSOC);
 //Show fields to update
-echo '<h3 class="worktitle text-center">Update your profile</h3><br>
+echo '<h3 class="worktitle text-center">Update your profile</h3><br/>
         <form role="form" action="EditCompany.php" method="post">
             <div class="form-group col-md-5 col-md-offset-4 col-sm-12">
                 <input placeholder="Name" type="text" class="form-control" name="Name" id="Name" value="'; 

@@ -55,7 +55,7 @@ mysqli_close($dbc);
                 Registered: <?php echo $register; ?>
 			</h2>
 			<h2 class="text-center">
-				<a class="eraseuser" href="EditUser.php">Edit Profile</a><br><br>
+				<a class="eraseuser" href="EditUser.php">Edit Profile</a><br/><br/>
 				<a class="eraseuser" href="EraseUser.php">Erase Profile</a>
 			</h2>
 		</div>

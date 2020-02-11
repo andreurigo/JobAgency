@@ -18,35 +18,35 @@ if ( (isset($_GET['OfferID'])) && (is_numeric($_GET['OfferID'])) ) {
                             <h3 class="worktitle text-center">
                                 Offer Information
                             </h3>
-                            <dl><br>
+                            <dl><br/>
                                 <dt>
                                     Title
                                 </dt>
                                 <dd>';
             echo                      $row['Title'].'
-                                </dd><br>
+                                </dd><br/>
                                 <dt>
                                     Category
                                 </dt>
                                 <dd>';
                                     if ($row['Category'] == NULL) { echo 'Others';} else { echo $row['Category'];};
-            echo                '</br></br></dd>
+            echo                '<br/><br/></dd>
                                 <dt>
-                                    Description </br>
+                                    Description <br/>
                                 </dt>
                                 <dd>';
             echo                     nl2br($row['Description']).'
-                                </br></br></dd>
+                                <br/><br/></dd>
                                 <dt>
-                                    Actions </br>
+                                    Actions <br/>
                                 </dt>
                                 <dd>
-                                </br>
+                                <br/>
                                     <a href="NewOffer.php?Action=2&OfferID=' . $row['OfferID'] . '">
                                         <button type="button" class="btn btn-lg btn-info">
                                             Edit Offer
                                         </button>
-                                    </a></br></br>
+                                    </a><br/><br/>
                                     <a href="ActionOffer.php?Action=3&OfferID=' . $row['OfferID'] . '">
                                         <button type="button" class="btn btn-lg btn-danger">
                                             Remove Offer
